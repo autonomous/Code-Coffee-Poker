@@ -1,17 +1,31 @@
 class Deck
-  def initialize
-    @cards = ([:ace, :king, :queen, :jack] + (1..10).to_a).map do |value|
+  
+  def self.standard
+    deck = Deck.new
+    ([:ace, :king, :queen, :jack] + (2..10).to_a).map do |value|
       [:spade, :heart, :club, :diamond].map do |suit|
-        Card.new(value, suit)
+        deck.add_card Card.new(value, suit)
       end
-    end.flatten
+    end
+    deck
+  end
+
+  attr_reader :cards
+  
+  def initialize
+    @cards = []
   end
   
   def size
-    52
+    @cards.size
   end
   
-  def cards
-    @cards
+  def add_card card
+    @cards << card
+  end
+  alias :<< :add_card
+  
+  def draw_card
+    @cards.shift
   end
 end

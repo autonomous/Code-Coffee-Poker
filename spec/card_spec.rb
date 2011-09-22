@@ -15,6 +15,6 @@ describe Card do
   it 'is equal based on value and suit' do
     card1 = Card.new(:ace, :diamond)
     card2 = Card.new(:ace, :diamond)
-    card1.should eql(card2)
+    card1.should eql(card2 )
   end
 end
