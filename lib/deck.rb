@@ -2,9 +2,9 @@ class Deck
   
   def self.standard
     deck = Deck.new
-    ([:ace, :king, :queen, :jack] + (2..10).to_a).map do |value|
-      [:spade, :heart, :club, :diamond].map do |suit|
-        deck.add_card Card.new(value, suit)
+    Card::RANKS.each do |rank|
+      Card::SUITS.each do |suit|
+        deck.add_card Card.new(rank, suit)
       end
     end
     deck
@@ -22,10 +22,22 @@ class Deck
   
   def add_card card
     @cards << card
+    self
   end
   alias :<< :add_card
   
-  def draw_card
-    @cards.shift
+  def draw_card(n=1)
+    n == 1 ? @cards.shift : @cards.shift(n)
+  end
+  alias :draw_cards :draw_card
+  
+  def shuffle!
+    @cards.shuffle!
+    self
+  end
+  
+  def sort!
+    @cards.sort!
+    self
   end
 end
