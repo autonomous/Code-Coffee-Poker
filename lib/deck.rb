@@ -12,8 +12,8 @@ class Deck
 
   attr_reader :cards
   
-  def initialize
-    @cards = []
+  def initialize(cards = nil)
+    @cards = cards ? cards : []
   end
   
   def size
@@ -30,14 +30,4 @@ class Deck
     n == 1 ? @cards.shift : @cards.shift(n)
   end
   alias :draw_cards :draw_card
-  
-  def shuffle!
-    @cards.shuffle!
-    self
-  end
-  
-  def sort!
-    @cards.sort!
-    self
-  end
 end

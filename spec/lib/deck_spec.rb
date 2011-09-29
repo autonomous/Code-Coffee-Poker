@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'spec_helper')
+require 'spec_helper'
 
 describe Deck, 'by default' do
   # is implicitly done :)
@@ -44,49 +44,9 @@ describe Deck, 'by default' do
     subject.draw_card.should == two_of_spades
   end
   
-  it 'can be shuffled' do
-    cards = [*2..10].map{ |rank| Card.new(rank, :diamond) }
-    cards.each do |card|
-      subject << card
-    end
-    
-    subject.cards.should == cards
-    
-    subject.shuffle!
-    subject.cards.should_not == cards
-    
-    subject.cards.each do |card|
-      cards.should include(card)
-    end
-    
-    subject.cards.size.should == cards.size    
-  end
-  
-  it 'can be sorted' do
-    deck1 = standard_deck
-    deck2 = standard_deck
-
-    deck1.object_id.should_not == deck2.object_id
-    
-    deck1.shuffle!
-    deck1.cards.should_not == deck2.cards
-    
-    deck1.sort!
-    deck2.sort!
-    deck1.cards.should == deck2.cards
-  end
-  
-  [:sort!, :shuffle!].each do |method|
-    it "should have a chainable #{method}" do
-      subject.send(method).should be_an_instance_of(Deck)
-    end
-
-  end
-
   it "should have a chainable add_card" do
     subject.add_card(two_of_spades).should be_an_instance_of(Deck)
   end
-  
 end
 
 describe 'Standard deck' do
@@ -104,8 +64,5 @@ describe 'Standard deck' do
     end
   end
   
-  it 'is sorted' do
-    deck = Deck.standard.sort!
-    subject.cards.should == deck.cards
-  end
+  it 'is sorted'
 end

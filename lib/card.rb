@@ -11,6 +11,10 @@ class Card
     @suit = suit
   end
   
+  def inspect
+    "#{suit} #{rank}"
+  end
+  
   def <=>(other_card)
     i_rank = RANKS.index(rank)
     i_suit  = SUITS.index(suit)
