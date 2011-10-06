@@ -47,6 +47,20 @@ describe Deck, 'by default' do
   it "should have a chainable add_card" do
     subject.add_card(two_of_spades).should be_an_instance_of(Deck)
   end
+  
+  it 'can be shuffled!' do
+    deck = standard_deck
+    expect do
+      deck.shuffle!
+    end.to change( deck, :cards )
+  end
+  
+  it 'can be shuffled' do
+    deck = standard_deck
+    expect do
+      deck.shuffle.should be_a_kind_of( Deck )
+    end.to_not change( deck, :cards ) 
+  end
 end
 
 describe 'Standard deck' do

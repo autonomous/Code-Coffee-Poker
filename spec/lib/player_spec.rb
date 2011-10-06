@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Player do
-  let(:dealer) { Dealer.new(Shuffler.shuffle(Deck.standard)) }
+  let(:dealer) { Dealer.new(Deck.standard) }
   let(:player) { Player.new }
 
   it "can hold cards" do

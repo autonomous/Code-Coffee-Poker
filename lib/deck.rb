@@ -30,4 +30,12 @@ class Deck
     n == 1 ? @cards.shift : @cards.shift(n)
   end
   alias :draw_cards :draw_card
+  
+  def shuffle
+    Deck.new(@cards.shuffle)
+  end
+  
+  def shuffle!
+    @cards.shuffle!
+  end
 end
