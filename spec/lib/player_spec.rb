@@ -21,6 +21,7 @@ describe Player do
     it 'can only discard up to 4 cards'
     
     it 'discard 2 of spades'
+    
   end
 
 end
